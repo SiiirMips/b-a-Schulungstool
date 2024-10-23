@@ -1,0 +1,265 @@
+body {
+    overflow-x: hidden;
+}
+
+.wrapper {
+    display: flex;
+}
+
+#fullSidebar {
+    width: 220px;
+    transition: all 0.3s ease-in-out;
+}
+
+#compactSidebar {
+    width: 80px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* General styles for navigation links */
+.nav-link {
+    display: flex;
+    align-items: center;
+    padding: 12px 15px;  /* Increased padding for a more spaced look */
+    font-size: 16px;
+    color: #555;
+    text-decoration: none;
+    transition: background-color 0.3s ease, border-radius 0.3s ease; /* Smooth hover transition */
+    margin-bottom: 10px;  /* Adds gap between the links */
+    border-radius: 8px;  /* Set the rounded corners */
+}
+
+/* Icon styling */
+.nav-link i {
+    font-size: 1.5rem;
+    margin-right: 10px;
+}
+
+/* Hover und aktiver Link-Effekt */
+.nav-link:hover, .nav-link.active {
+    background-color: #f0f0f0;
+    color: #2da05f;
+    border-radius: 12px;  /* Optional: abgerundete Ecken */
+}
+
+#compactSidebar .nav-link {
+    display: flex;              /* Flexbox für komplette Zentrierung */
+    justify-content: center;     /* Horizontale Zentrierung */
+    align-items: center;         /* Vertikale Zentrierung */
+    width: 50px;                 /* Feste Breite */
+    height: 50px;                /* Feste Höhe */
+    margin: 10px auto;           /* Abstand zwischen den Links */
+    border-radius: 50%;          /* Runde Form */
+    transition: all 0.3s ease;   /* Weicher Übergang */
+    background-color: transparent;  /* Keine Hintergrundfarbe, bis Hover */
+    position: relative;          /* Relativ für perfekte Ausrichtung */
+}
+
+#compactSidebar .nav-link i {
+    font-size: 24px;             /* Größe der Icons, kann angepasst werden */
+    position: absolute;          /* Absolute Positionierung des Icons */
+    top: 50%;                    /* Vertikale Mitte */
+    left: 50%;                   /* Horizontale Mitte */
+    transform: translate(-50%, -50%); /* Exakte Zentrierung mit translate */
+}
+
+/* Hover und aktive Klasse für die kompakte Sidebar */
+#compactSidebar .nav-link:hover, #compactSidebar .nav-link.active {
+    background-color: #f0f0f0;
+    color: #2da05f;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);  /* Schatteneffekt beim Hover und aktivem Zustand */
+    border-radius: 50%;  /* Runde Form für kompakte Sidebar */
+}
+
+/* Hover effect transition */
+.nav-link {
+    transition: all 0.3s ease;  /* Smooth and fluid transition for hover */
+}
+
+@media (max-width: 1198px) {
+    #fullSidebar {
+        display: none;
+    }
+    
+    #compactSidebar {
+        display: block;
+    }
+}
+
+@media (min-width: 1199px) {
+    #compactSidebar {
+        display: none;
+    }
+}
+
+#user-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;  /* Zentriert den gesamten Inhalt horizontal */
+    padding-bottom: 20px;  /* Platz zum unteren Rand */
+    margin-top: auto;  /* Drückt das Element an den unteren Rand der Sidebar */
+}
+
+#user-info hr {
+    width: 80%;  /* Macht den Trennstrich kürzer */
+    margin: 0 auto 20px auto;  /* Zentriert den Strich mit etwas Abstand darunter */
+    border-top: 1px solid #ccc;
+}
+
+#user-info img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+#user-info .ms-2 {
+    display: flex;
+    flex-direction: column;
+    text-align: center;  /* Zentriert Text (Name und E-Mail) */
+    align-items: center;  /* Zentriert den Text im Verhältnis zum Bild */
+}
+
+#user-info .ms-2 p {
+    margin: 0;
+}
+
+#compactSidebar {
+    width: 80px;
+    transition: all 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Sorgt dafür, dass der Inhalt den Platz nutzt */
+    padding-bottom: 0;
+}
+
+#user-info-compact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 20px;
+    margin-top: auto; /* Positioniert den Benutzerbereich unten */
+}
+
+#user-info-compact hr {
+    width: 60%;  /* Kürzerer Trennstrich in der kompakten Sidebar */
+    margin: 0 auto 10px auto;  /* Zentriert den Strich und sorgt für Abstand nach unten */
+    border-top: 1px solid #ccc;
+}
+
+#user-info-compact img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Karten-Design */
+.card-body {
+    padding: 0.5rem; /* Reduziertes Padding */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 60px; /* Kleinere Mindesthöhe */
+    position: relative; /* Relative Positionierung für Fixierung des Icons */
+}
+
+.icon {
+    flex-shrink: 0; /* Verhindert das Schrumpfen des Icons */
+    position: absolute;
+    right: 20px; /* Abstand zum rechten Rand der Karte */
+    top: 50%;
+    transform: translateY(-50%); /* Zentriert das Icon vertikal */
+}
+
+.icon i {
+    font-size: 2rem;  /* Feste Icon-Größe */
+    color: #d3d3d3;   /* Standardfarbe des Icons */
+}
+
+.left-content h3 {
+    font-size: 20px;
+    color: #888;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-number { 
+    font-size: 28px;
+    color: #2da05f !important;
+}
+
+/* Anpassungen für die Karten */
+.card {
+    background-color: #fff; /* Setzt die Hintergrundfarbe auf RGB(248, 249, 250) */
+    border: none; /* Kleinere Randlinie */
+    border-radius: 8px; /* Abgerundete Ecken */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Leichter Schatten */
+    transition: all 0.3s ease; /* Übergang für Hover-Effekte */
+    max-width: 100%; /* Maximale Breite für die Karten */
+    max-height: 100%; /* Maximale Höhe für die Karten */
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Verstärkter Schatten beim Hover */
+}
+
+/* Navbar komplett weiß für beide Sidebars */
+#fullSidebar, #compactSidebar {
+    background-color: #fff !important /* Weißer Hintergrund für beide Sidebars */
+}
+
+/* Content-Bereich Hintergrundfarbe */
+.content {
+    background-color: rgb(248, 249, 250); /* Setzt den Hintergrund des Content-Bereichs */
+}
+
+.card-header {
+    background-color: #ffffff;
+    border-bottom: none;
+    padding: 10px 20px;
+}
+
+.card-header .d-flex {
+    display: flex;
+    align-items: center;
+}
+
+.form-check-label {
+    font-size: 0.85rem; /* Adjusts the label size for better fit */
+}
+
+.card-body {
+    padding: 20px;
+}
+
+@media (max-width: 768px) {
+    .card-header .d-flex {
+        flex-direction: column; /* Stack switches below title */
+        align-items: flex-start; /* Align switches to the left under the title */
+        margin-top: 10px;
+    }
+    
+    .card-header .form-check {
+        margin-top: 5px; /* Add some spacing between the switches */
+    }
+}
+
+canvas {
+    display: block;
+    width: 100%;
+}
+
+#barChart, #pieChart {
+    max-height: 500px; /* Begrenze die maximale Höhe auf 300px */
+    width: 120%; /* Breite auf 100% setzen, damit es sich an den Container anpasst */
+}
+
+.custom-divider {
+    border-top: 1px solid #e0e0e0;
+    width: 95%;
+    margin: 10px auto;
+    opacity: 1;
+  }

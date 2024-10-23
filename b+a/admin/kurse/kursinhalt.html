@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="de">
+  
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+      b+a Schulungstool
+    </title>
+    <link rel="icon" type="image/png" href="/favicon/favicon-48x48.png" sizes="48x48"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"
+    />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+    rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css"
+    rel="stylesheet">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+      /* Nav-Tabs Styling */ /* Nav-Tabs Styling */ .nav-tabs {
+        border-bottom:1px solid #e9ecef;
+}
+.nav-tabs .nav-link {
+  border:none;
+  color:#6c757d;
+  background-color:transparent !important;
+  /* Kein Hintergrund beim aktiven
+      Tab */
+}
+.nav-tabs .nav-link.active {
+  color:#0d6efd;
+  position:relative;
+}
+.nav-tabs .nav-link.active::after {
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:-1px;
+  height:2px;
+  width:100%;
+  background-color:#0d6efd;
+}
+.course-header {
+    display: flex;
+    align-items: center; /* Vertikale Zentrierung */
+    margin-bottom: 1rem;
+}
+.course-icon img {
+    width: 50px;
+    height: auto;
+}
+.course-details small {
+  font-size:12px;
+  /* Größe des "Kurs"-Texts */
+      color:#6c757d;
+  /* Leicht abgedunkelte Farbe */
+}
+.course-details h4 {
+  font-size:1.5rem;
+  /* Größe des Kursnamens */ color:#343a40;
+  /* Dunklere
+      Farbe für den Kursnamen */
+}
+.course-details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Stellt sicher, dass Buttons und Text auf gleicher Höhe sind */
+    width: 100%; /* Nimmt den gesamten Platz ein */
+}
+.course-details {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  /*
+      Stellt sicher,dass Buttons und Text auf gleicher Höhe sind */ width:100%;
+  /* Nimmt den gesamten Platz ein */
+}
+.course-actions .btn {
+    height: auto; /* Standardhöhe der Buttons */
+}
+/* Media Query für kleine Bildschirme */
+@media (max-width: 768px) {
+    .course-details {
+        flex-direction: row; /* Icon und Kursdetails bleiben nebeneinander */
+        justify-content: space-between;
+    }
+
+    .course-info {
+        flex: 1; /* Kursdetails nehmen den gesamten verfügbaren Platz ein */
+    }
+
+    .course-actions {
+        flex-direction: column; /* Vertikale Anordnung der Buttons */
+        width: 100%; /* Buttons füllen den ganzen Bereich */
+        align-items: flex-start; /* Buttons linksbündig */
+        margin-top: 1rem; /* Abstand zwischen Kursdetails und Buttons */
+    }
+
+    .course-actions .btn {
+        width: 100%; /* Die Buttons nehmen die volle Breite ein */
+        margin-bottom: 10px; /* Abstand zwischen den Buttons */
+    }
+
+    .course-actions .dropdown-toggle {
+        width: 100%; /* Dropdown nimmt auch die volle Breite ein */
+    }
+}
+    </style>
+  </head>
+  
+  <body>
+    <div class="wrapper d-flex">
+      <!-- Full Sidebar -->
+      <nav id="fullSidebar" class="d-none d-lg-flex flex-column bg-light text-dark vh-100 p-3 position-relative">
+        <div class="logo mb-3 text-center">
+          <img src="/assets/img/bua-bunt.png" alt="Logo" style="width: 150px; height: auto;">
+        </div>
+        <ul class="nav flex-column">
+          <li class="nav-item">
+            <a href="/admin/dashboard.html" class="nav-link active">
+              <i class="bi bi-house-door">
+              </i>
+              Dashboard
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/kurse.html" class="nav-link">
+              <i class="bi bi-easel">
+              </i>
+              Kurse
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/kursteilnahmen.html" class="nav-link">
+              <i class="bi bi-file-text">
+              </i>
+              Kursteilnahmen
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/benutzer.html" class="nav-link">
+              <i class="bi bi-people">
+              </i>
+              Benutzer
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/gruppen.html" class="nav-link">
+              <i class="bi bi-diagram-3">
+              </i>
+              Gruppen
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/einstellungen.html" class="nav-link">
+              <i class="bi bi-gear">
+              </i>
+              Einstellungen
+            </a>
+          </li>
+        </ul>
+        <!-- User Info Section for Full Sidebar -->
+        <div id="user-info" class="d-none d-lg-flex flex-column align-items-center p-3">
+          <hr class="w-100 mb-3" style="border-top: 1px solid #ccc; max-width: 80%;">
+          <div class="d-flex align-items-center">
+            <img src="/assets/img/default.webp" alt="User Image" class="rounded-circle"
+            style="width: 40px; height: 40px;">
+            <div class="ms-2">
+              <p class="mb-0 fw-bold">
+                Marvin Blöcher
+              </p>
+              <p class="mb-0 text-muted" style="font-size: 12px;">
+                m.bloecher@brillundadloff.de
+              </p>
+            </div>
+          </div>
+        </div>
+      </nav>
+      <!-- Compact Sidebar -->
+      <nav id="compactSidebar" class="d-lg-none bg-light text-dark vh-100 p-3 position-relative">
+        <div class="logo mb-3 text-center">
+          <img src="/assets/img/bua-small.png" alt="Logo" style="width: 50px; height: auto;">
+        </div>
+        <ul class="nav flex-column align-items-center">
+          <li class="nav-item">
+            <a href="/admin/dashboard.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Dashboard" data-bs-placement="right">
+              <i class="bi bi-house-door">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/kurse.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Kurse" data-bs-placement="right">
+              <i class="bi bi-easel">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/kursteilnahmen.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Kursteilnahmen" data-bs-placement="right">
+              <i class="bi bi-file-text">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/benutzer.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Benutzer" data-bs-placement="right">
+              <i class="bi bi-people">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/gruppen.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Gruppen" data-bs-placement="right">
+              <i class="bi bi-diagram-3">
+              </i>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="/admin/einstellungen.html" class="nav-link" data-bs-toggle="tooltip"
+            title="Einstellungen" data-bs-placement="right">
+              <i class="bi bi-gear">
+              </i>
+            </a>
+          </li>
+        </ul>
+        <!-- User Info Section for Compact Sidebar -->
+        <div id="user-info-compact" class="d-lg-none text-center p-3" style="margin-top: auto;">
+          <hr class="w-100 mb-3" style="border-top: 1px solid #ccc; max-width: 60%;">
+          <img src="/assets/img/default.webp" alt="User Image" class="rounded-circle"
+          style="width: 40px; height: 40px;">
+        </div>
+      </nav>
+      <!-- Main Content -->
+      <div class="content flex-grow-1 p-4">
+        <!-- Breadcrumbs -->
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item">
+              <a href="/admin/dashboard.html">
+                Administration
+              </a>
+            </li>
+            <li class="breadcrumb-item active" id="current-page" aria-current="page">
+              Brandschutz
+            </li>
+          </ol>
+        </nav>
+<!-- Course Overview -->
+<div class="course-header d-flex justify-content-between align-items-center mb-4">
+    <!-- Icon-Bereich -->
+    <div class="course-icon me-3">
+        <img src="/assets/img/bua-bunt.png" alt="Course Icon" style="width: 50px; height: auto;">
+    </div>
+
+    <!-- Kursinformationen und Buttons -->
+    <div class="course-details w-100 d-flex justify-content-between align-items-center">
+        <!-- Kursdetails -->
+        <div class="course-info">
+            <small class="text-muted">Kurs</small>
+            <h4 class="fw-bold mb-0">Brandschutz</h4>
+            <p class="text-muted mb-0">Kursleitung: Marvin Blöcher</p>
+        </div>
+
+        <!-- Course Actions (Buttons) -->
+        <div class="course-actions d-flex">
+            <div class="dropdown me-2">
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    Lerninhalte hinzufügen
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li><a class="dropdown-item" href="#">Bild- und Präsentationsfolien</a></li>
+                    <li><a class="dropdown-item" href="#">Artikel</a></li>
+                    <li><a class="dropdown-item" href="#">Video</a></li>
+                    <li><a class="dropdown-item" href="#">Quizfrage</a></li>
+                </ul>
+            </div>
+            <button class="btn btn-outline-secondary me-2">Kurs bearbeiten</button>
+            <button class="btn btn-outline-danger me-2"><i class="bi bi-trash"></i></button>
+            <div class="dropdown">
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="threeDotMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                    <i class="bi bi-three-dots"></i>
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="threeDotMenuButton">
+                    <li><a class="dropdown-item" href="#">Kurs duplizieren</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+        <!-- Navigation Tabs -->
+        <ul class="nav nav-tabs mt-4">
+          <li class="nav-item">
+            <a class="nav-link active" href="#">
+              Lerninhalte
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Beschreibung
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Kursteilnahmen
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Regelmäßige Wiederholungen
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Bewertungen
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">
+              Erweiterte Einstellungen
+            </a>
+          </li>
+        </ul>
+
+        <div class="spacer" style="height: 50px;"></div>
+        <!-- Course Content Placeholder -->
+        <div class="course-content text-center">
+          <img src="/assets/img/happy-character-winning-prize-with-flat-design.f885b49f33eb.svg" alt="No Content"
+          style="width: 150px;">
+          <p class="mt-3">
+            Der Kurs hat noch keine Lerninhalte...
+          </p>
+          <button class="btn btn-primary">
+            Lerninhalte hinzufügen
+          </button>
+        </div>
+      </div>
+      <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js">
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js">
+      </script>
+      <script src="/assets/js/script.js">
+      </script>
+  </body>
+</html>

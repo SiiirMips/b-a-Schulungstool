@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>b+a Schulungstool</title>
+    <link rel="icon" type="image/png" href="/favicon/favicon-48x48.png" sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+    <link rel="manifest" href="/favicon/site.webmanifest" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        .navbar-custom {
+            background-color: #ffffff !important;
+        }
+        .navbar-brand img {
+            width: 90px;
+            height: auto;
+        }
+
+        /* Main Content Hintergrundfarbe */
+        main {
+            background-color: rgb(248, 249, 250);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        /* Abstand zum oberen Rand */
+        .content-section {
+            margin-top: 50px;
+        }
+
+        /* Nav-Tabs Styling */
+        .nav-tabs {
+            border-bottom: 1px solid #e9ecef;
+        }
+        .nav-tabs .nav-link {
+            border: none;
+            color: #6c757d;
+            background-color: transparent !important; /* Kein Hintergrund beim aktiven Tab */
+        }
+        .nav-tabs .nav-link.active {
+            color: #0d6efd;
+            position: relative;
+        }
+        .nav-tabs .nav-link.active::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -1px;
+            height: 2px;
+            width: 100%;
+            background-color: #0d6efd;
+        }
+
+        /* Styling für die Karten */
+        .card-custom {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-header {
+            background-color: #ffffff;
+        }
+
+        /* Button: Primary und Outline bei Hover */
+        .btn-admin:hover {
+            background-color: #198754;
+            color: white;
+            border: 1px solid transparent;
+            transition: all 0.3s ease-in-out;
+        }
+        .btn-admin {
+            background-color: white;
+            color: #198754;
+            border-color: #198754;
+            transition: all 0.3s ease-in-out;
+        }
+
+        /* Custom Styles für die neue Card */
+        .search-input {
+            border-radius: 20px;
+            border: none; /* Keine Border */
+            padding: 8px 20px;
+        }
+
+        .sort-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Größeres Icon in der Suchleiste */
+        .input-group-text i {
+            font-size: 1.5rem; /* Skaliertes Icon */
+        }
+
+        .card-body img {
+            display: block;
+            margin: 0 auto;
+            max-width: 300px;
+        }
+
+        .card-body p {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
+            color: #343a40;
+        }
+
+                /* Media Query zum Ausblenden der Sortier-Buttons bei kleinen Bildschirmen */
+                @media (max-width: 768px) {
+            .sort-buttons {
+                display: none; /* Blendet die Sortier-Buttons aus */
+            }
+        }
+
+        html, body {
+    overflow: hidden; /* Deaktiviert das Scrollen */
+}
+
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-light bg-light navbar-custom">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="/assets/img/bua-bunt.png" alt="Logo">
+        </a>
+
+        <!-- Right-aligned buttons -->
+        <div class="d-flex justify-content-end">
+            <a href="/admin/dashboard.html" class="btn btn-success me-3 btn-admin d-inline-flex align-items-center" id="adminBtn">
+                <i class="bi bi-lock" id="adminIcon"></i>
+                <span class="d-none d-md-inline">Administration</span>
+            </a>
+            </button>
+
+            <button class="btn btn-light me-3" type="button">
+                <i class="bi bi-globe"></i>
+                <span class="d-none d-md-inline">Deutsch</span>
+            </button>
+
+            <div class="btn btn-light rounded-circle" style="width: 40px; height: 40px;">
+                <span class="text-center">MB</span>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<main>
+    <div class="container content-section">
+        <!-- Header: Übersicht und Meine Schulungen -->
+        <div class="content-header mb-4">
+            <small>Übersicht</small>
+            <h2 class="mt-1">Meine Schulungen</h2>
+        </div>
+
+<!-- Tabs: Zu erledigen und Erledigt -->
+<ul class="nav nav-tabs mb-4" id="myTab" role="tablist">
+    <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="zu-erledigen-tab" href="/participations/todo.html" role="tab" aria-controls="zu-erledigen" aria-selected="true">Zu erledigen <span class="badge bg-secondary">0</span></a>
+    </li>
+    <li class="nav-item" role="presentation">
+        <a class="nav-link" id="erledigt-tab" href="/participations/done.html" role="tab" aria-controls="erledigt" aria-selected="false">Erledigt <span class="badge bg-secondary">1</span></a>
+    </li>
+</ul>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="myTabContent">
+            <!-- Zu erledigen Tab Pane mit neuer Card -->
+            <div class="tab-pane fade show active" id="zu-erledigen" role="tabpanel" aria-labelledby="zu-erledigen-tab">
+                <div class="card card-custom">
+                    <!-- Card Header mit Suchfeld und Sortier-Buttons -->
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="input-group" style="max-width: 300px;">
+                            <span class="input-group-text bg-white border-0">
+                                <i class="bi bi-search"></i>
+                            </span>
+                            <input type="text" class="form-control search-input" placeholder="Suchen">
+                        </div>
+                        <div class="sort-buttons">
+                            <button type="button" class="btn btn-light btn-sm">Sortieren nach Frist <i class="bi bi-caret-up-fill"></i></button>
+                            <button type="button" class="btn btn-light btn-sm">Sortieren nach Titel</button>
+                        </div>
+                    </div>
+
+                    <!-- Card Body mit SVG Bild und Text -->
+                    <div class="card-body text-center">
+                        <!-- SVG Bild -->
+                        <img src="/assets/img/achievement-5597527_1920.png" alt="SVG Bild">
+                        <!-- Text -->
+                        <p>Keine Aufgaben für heute. Genießen Sie Ihren Morgen!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Erledigt Tab Pane -->
+            <div class="tab-pane fade" id="erledigt" role="tabpanel" aria-labelledby="erledigt-tab">
+                <div class="card card-custom">
+                    <div class="card-body">
+                        <h5 class="card-title">Erledigte Schulung</h5>
+                        <p class="card-text">Beschreibung der erledigten Schulung.</p>
+                        <a href="#" class="btn btn-primary">Details anzeigen</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Bootstrap JS und Popper.js -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+<!-- JavaScript zum Ändern des Icons bei Hover -->
+<script>
+    const adminButton = document.getElementById('adminBtn');
+    const adminIcon = document.getElementById('adminIcon');
+
+    // Icon beim Hover ändern
+    adminButton.addEventListener('mouseover', function() {
+        adminIcon.classList.remove('bi-lock');
+        adminIcon.classList.add('bi-unlock');
+    });
+
+    // Icon zurück ändern, wenn der Hover aufhört
+    adminButton.addEventListener('mouseout', function() {
+        adminIcon.classList.remove('bi-unlock');
+        adminIcon.classList.add('bi-lock');
+    });
+</script>
+
+<script>
+    // Funktion, um den aktiven Tab basierend auf der aktuellen URL festzulegen
+    document.addEventListener("DOMContentLoaded", function() {
+        // Hole alle Nav-Links
+        const navLinks = document.querySelectorAll('.nav-link');
+
+        // Hole die aktuelle URL
+        const currentURL = window.location.href;
+
+        // Überprüfe jeden Link und setze den entsprechenden Tab auf aktiv
+        navLinks.forEach(link => {
+            if (link.href === currentURL) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    });
+</script>
+</body>
+</html>
